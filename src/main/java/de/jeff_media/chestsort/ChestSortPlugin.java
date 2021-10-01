@@ -695,9 +695,9 @@ public class ChestSortPlugin extends JavaPlugin {
                 rightClick = Boolean.parseBoolean(NBTAPI.getNBT(p, "rightClick", String.valueOf(playerConfig.getBoolean("rightClick", getConfig().getBoolean("additional-hotkeys.right-click")))));
                 leftClickFromOutside = Boolean.parseBoolean(NBTAPI.getNBT(p, "leftClickOutside", String.valueOf(playerConfig.getBoolean("leftClickOutside", getConfig().getBoolean("left-click-to-sort-enabled-by-default")))));
                 hasSeenMessage = Boolean.parseBoolean(NBTAPI.getNBT(p, "hasSeenMessage", String.valueOf("false")));
-                //System.out.println("Loading playersetting from NBT");
+                System.out.println("Loading playersetting from NBT");
                 if(getConfig().getBoolean("show-message-again-after-logout")) {
-                    //System.out.println("show-message-again-after-logout is true, sooo...");
+                    System.out.println("show-message-again-after-logout is true, sooo...");
                     hasSeenMessage = false;
                 }
 
