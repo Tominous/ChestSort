@@ -36,13 +36,13 @@ public class SettingsGUI implements Listener {
 
     ItemStack getItem(boolean active, Hotkey hotkey, Player player) {
 
-        //System.out.println("Getting Item for hotkey " + hotkey);
+        System.out.println("Getting Item for hotkey " + hotkey);
 
         ItemStack is;
         String suffix;
 
         if(!player.hasPermission(Hotkey.getPermission(hotkey))) {
-            //System.out.println(" Player does NOT have permission " + hotkey.name());
+            System.out.println(" Player does NOT have permission " + hotkey.name());
             return null;
         }
 
