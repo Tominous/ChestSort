@@ -178,11 +178,11 @@ public final class ConfigUpdater {
 
             String updatedLine = defaultLine;
 
-            /*if (Daddy.allows(Features.GENERIC)) {
+            if (Daddy.allows(Features.GENERIC)) {
                 if (updatedLine.startsWith("# PREMIUM FEATURE: ONLY AVAILABLE IN AngelChestPlus!")) {
                     updatedLine = null;
                 }
-            } else*/
+            } else
 
             //noinspection StatementWithEmptyBody
             if (defaultLine.startsWith("sorting-hotkeys:") || defaultLine.startsWith("additional-hotkeys:")) {
