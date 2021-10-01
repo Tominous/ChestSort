@@ -164,11 +164,11 @@ public class ChestSortOrganizer {
         return sortableInventories.contains(inv);
     }
 
-    /*static int getNumberOfEnchantments(ItemStack is) {
+    static int getNumberOfEnchantments(ItemStack is) {
 
         int totalEnchants = 0;
 
-        //if(!is.getItemMeta().hasEnchants()) return 0;
+        if(!is.getItemMeta().hasEnchants()) return 0;
         if (is.getItemMeta() instanceof EnchantmentStorageMeta) {
             EnchantmentStorageMeta storageMeta = (EnchantmentStorageMeta) is.getItemMeta();
             Map<Enchantment, Integer> storedEnchants = storageMeta.getStoredEnchants();
@@ -183,7 +183,7 @@ public class ChestSortOrganizer {
             totalEnchants += level;
         }
         return totalEnchants;
-    }*/
+    }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     boolean doesInventoryContain(Inventory inv, Material mat) {
@@ -288,7 +288,7 @@ public class ChestSortOrganizer {
                 typeName = typeName.replaceFirst(woodName + "_", "");
                 myColor = woodName;
             } else if (typeName.equals("stripped_" + woodName + "_log")) {
-                // typeName = typeName.replaceFirst("stripped_"+woodName+"_", "stripped_");
+                 typeName = typeName.replaceFirst("stripped_"+woodName+"_", "stripped_");
                 typeName = "log_stripped";
                 myColor = woodName;
             } else if (typeName.equals("stripped_" + woodName + "_wood")) {
@@ -404,7 +404,7 @@ public class ChestSortOrganizer {
                 } catch (NoSuchMethodException | SecurityException ignored) {
                 }
 
-                // potionEffects = potionEffects.substring(0, potionEffects.length()-1);
+                 potionEffects = potionEffects.substring(0, potionEffects.length()-1);
             }
         }
 
@@ -710,8 +710,8 @@ public class ChestSortOrganizer {
             if(chestSortEvent.isUnmovable(i) || chestSortEvent.isUnmovable(currentItem)) continue;
 
             // This prevents Minepacks from being put into Minepacks
-			/*if(plugin.hookMinepacks && plugin.listener.minepacksHook.isMinepacksBackpack(destination)
-					&& plugin.listener.minepacksHook.isMinepacksBackpack(currentItem)) continue;*/
+			if(plugin.hookMinepacks && plugin.listener.minepacksHook.isMinepacksBackpack(destination)
+					&& plugin.listener.minepacksHook.isMinepacksBackpack(currentItem)) continue;
             // This prevents Minepacks from being moved at all
             if (plugin.isHookMinepacks() && plugin.getListener().minepacksHook.isMinepacksBackpack(currentItem)) continue;
 
