@@ -70,7 +70,7 @@ public class Listener implements org.bukkit.event.Listener {
             return;
         }
         if(!ProtectionUtils.canInteract(event.getPlayer(), clickedBlock)) {
-            //System.out.println("ChestSort: cannot interact!");
+            System.out.println("ChestSort: cannot interact!");
             return;
         }
         plugin.registerPlayerIfNeeded(event.getPlayer());
@@ -487,7 +487,7 @@ public class Listener implements org.bukkit.event.Listener {
         switch (event.getClick()) {
             case MIDDLE:
                 cause = Logger.SortCause.H_MIDDLE;
-                //if(plugin.getConfig().getBoolean("hotkeys.middle-click")) {
+                if(plugin.getConfig().getBoolean("hotkeys.middle-click")) {
                 if (setting.middleClick && p.hasPermission(Hotkey.getPermission(Hotkey.MIDDLE_CLICK))) {
                     if (event.getWhoClicked().getGameMode() != GameMode.CREATIVE
                         || (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR)) {
@@ -498,7 +498,7 @@ public class Listener implements org.bukkit.event.Listener {
             case DOUBLE_CLICK:
                 if(event.isShiftClick()) return;
                 cause = Logger.SortCause.H_DOUBLE;
-                //if(plugin.getConfig().getBoolean("hotkeys.double-click")) {
+                if(plugin.getConfig().getBoolean("hotkeys.double-click")) {
                 if (setting.doubleClick  && p.hasPermission(Hotkey.getPermission(Hotkey.DOUBLE_CLICK))) {
                     // We need getCursor() instead of getCurrentItem(), because after picking up the item, it is gone into the cursor
                     if (event.getCursor() == null || (event.getCursor() != null && event.getCursor().getType() == Material.AIR)) {
@@ -508,7 +508,7 @@ public class Listener implements org.bukkit.event.Listener {
                 break;
             case SHIFT_LEFT:
                 cause = Logger.SortCause.H_SHIFT;
-                //if(plugin.getConfig().getBoolean("hotkeys.shift-click")) {
+                if(plugin.getConfig().getBoolean("hotkeys.shift-click")) {
                 if (setting.shiftClick && p.hasPermission(Hotkey.getPermission(Hotkey.SHIFT_CLICK))) {
                     if (event.getCurrentItem() == null || (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.AIR)) {
                         sort = true;
@@ -517,7 +517,7 @@ public class Listener implements org.bukkit.event.Listener {
                 break;
             case SHIFT_RIGHT:
                 cause = Logger.SortCause.H_SHIFTRIGHT;
-                //if(plugin.getConfig().getBoolean("hotkeys.shift-right-click")) {
+                if(plugin.getConfig().getBoolean("hotkeys.shift-right-click")) {
                 if (setting.shiftRightClick && p.hasPermission(Hotkey.getPermission(Hotkey.SHIFT_RIGHT_CLICK))) {
                     if (event.getCurrentItem() == null || (event.getCurrentItem() != null && event.getCurrentItem().getType() == Material.AIR)) {
                         sort = true;
@@ -641,14 +641,14 @@ public class Listener implements org.bukkit.event.Listener {
         // CrateReloaded hook
         if(CrateReloadedHook.isCrate(e.getClickedInventory())
                 || CrateReloadedHook.isCrate(e.getInventory())) {
-            //if(plugin.debug) plugin.getLogger().info("Aborting hotkey because this is a CrateReloaded crate");
+            if(plugin.debug) plugin.getLogger().info("Aborting hotkey because this is a CrateReloaded crate");
             return;
         }
 
         // GoldenCrates hook
         if(goldenCratesHook.isCrate(e.getClickedInventory())
                 || goldenCratesHook.isCrate(e.getInventory())) {
-            //if(plugin.debug) plugin.getLogger().info("Aborting hotkey because this is a CrateReloaded crate");
+            if(plugin.debug) plugin.getLogger().info("Aborting hotkey because this is a CrateReloaded crate");
             return;
         }
 
@@ -720,7 +720,7 @@ public class Listener implements org.bukkit.event.Listener {
             }
 
         }
-        //plugin.organizer.sortInventory(e.getInventory());
+        plugin.organizer.sortInventory(e.getInventory());
         plugin.getOrganizer().updateInventoryView(e.getInventory());
         plugin.getOrganizer().updateInventoryView(p.getInventory());
     }
