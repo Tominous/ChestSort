@@ -10,7 +10,7 @@ public enum Hotkey {
 
     public static String getPermission(Hotkey hotkey) {
         String permission = "chestsort.hotkey." + hotkey.name().toLowerCase(Locale.ROOT).replace("_", "");
-        //System.out.println("Permission for " + hotkey.name()+ ": " + permission);
+        System.out.println("Permission for " + hotkey.name()+ ": " + permission);
         return permission;
     }
 }
